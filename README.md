@@ -12,7 +12,7 @@ First you'll need an account CloudFlare and Turnstile setup for your website.
 
 Install via composer
 ```bash
-composer require derekcodes-io/turnstile-laravel
+composer require derekcodes/turnstile-laravel 
 ```
 
 Adding your secret key in the .env file
