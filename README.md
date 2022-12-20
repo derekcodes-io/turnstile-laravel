@@ -1,6 +1,6 @@
 # CloudFlare's Turnstile For Laravel
 
-> A laravel package to facilitate the server side validation of Cloudflare's Turnstile captcha service.
+> A Laravel package to facilitate the server side validation of CloudFlare's Turnstile captcha service.
 
 ## Configuration
 
