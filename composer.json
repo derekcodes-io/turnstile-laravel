@@ -1,11 +1,11 @@
 {
     "name": "derekcodes/turnstile-laravel",
-    "description": "A laravel package to facilite the server side validation of Cloudflare's Turnstile captcha service.",
+    "description": "A Laravel package to facilite the server side validation of CloudFlare's Turnstile captcha service.",
     "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Derekcodes\\TurnstileLaravel\\": "src/"
+            "DerekCodes\\TurnstileLaravel\\": "src/"
         }
     },
     "authors": [
