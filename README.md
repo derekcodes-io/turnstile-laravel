@@ -50,6 +50,29 @@ if ($response['status'] == true) {
 }
 ```
 
+## Responses
+
+Example success response
+```json
+{
+  "status": 1
+}
+```
+
+Example error response
+```json
+{
+  "status": 0,
+  "turnstile_response": {
+    "success": false,
+    "error-codes": [
+      "invalid-input-response"
+    ],
+    "messages": []
+  }
+}
+```
+
 ## Credits
 
 ~ Derek Codes
