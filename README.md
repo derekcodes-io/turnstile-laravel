@@ -2,6 +2,8 @@
 
 > A Laravel package to facilitate the server side validation of CloudFlare's Turnstile captcha service.
 
+[![GitHub release](https://img.shields.io/github/release/derekcodes-io/turnstile-laravel)](https://GitHub.com/derekcodes-io/turnstile-laravel/releases/)
+
 ## Configuration
 
 First you'll need an account CloudFlare and Turnstile setup for your website. 
