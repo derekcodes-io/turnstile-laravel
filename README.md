@@ -1,6 +1,9 @@
 # CloudFlare's Turnstile For Laravel
 
-> A laravel package to facilite the server side validation of Cloudflare's Turnstile captcha service.
+> A Laravel package to facilitate the server side validation of CloudFlare's Turnstile captcha service.
+
+[![GitHub release](https://img.shields.io/github/release/derekcodes-io/turnstile-laravel)](https://GitHub.com/derekcodes-io/turnstile-laravel/releases/)
+![GitHub repo size](https://img.shields.io/github/repo-size/derekcodes-io/turnstile-laravel)
 
 ## Configuration
 
@@ -45,6 +48,29 @@ Ensure the response is valid
 ```php
 if ($response['status'] == true) {
   // TODO: add success code here
+}
+```
+
+## Responses
+
+Example success response
+```json
+{
+  "status": 1
+}
+```
+
+Example error response
+```json
+{
+  "status": 0,
+  "turnstile_response": {
+    "success": false,
+    "error-codes": [
+      "invalid-input-response"
+    ],
+    "messages": []
+  }
 }
 ```
 
