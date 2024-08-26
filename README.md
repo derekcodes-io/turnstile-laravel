@@ -1,13 +1,13 @@
-# CloudFlare's Turnstile For Laravel
+# Cloudflare's Turnstile For Laravel
 
-> A Laravel package to facilitate the server side validation of CloudFlare's Turnstile captcha service.
+> A Laravel package to facilitate the server side validation of Cloudflare's Turnstile captcha service.
 
 [![GitHub release](https://img.shields.io/github/release/derekcodes-io/turnstile-laravel)](https://GitHub.com/derekcodes-io/turnstile-laravel/releases/)
 ![GitHub repo size](https://img.shields.io/github/repo-size/derekcodes-io/turnstile-laravel)
 
 ## Configuration
 
-First you'll need an account CloudFlare and Turnstile setup for your website. 
+First you'll need an account Cloudflare and Turnstile setup for your website. 
 
 [https://developers.cloudflare.com/turnstile/](https://developers.cloudflare.com/turnstile/)
 
@@ -20,15 +20,31 @@ composer require derekcodes/turnstile-laravel
 
 Adding your secret key in the .env file
 ```bash
+TURNSTILE_SITE_KEY="0x4AAAAAAAXXXXXXXXXXXXXX"
 TURNSTILE_SECRET_KEY="0x4AAAAAAAXXXXXXXXXXXXXX"
 ```
 
 Create a `config/turnstile.php`
-```php
-<?php
-    return [
-        'secret_key' => env('TURNSTILE_SECRET_KEY', null),
-    ];
+```bash
+php artisan vendor:publish --tag=turnstile-config
+```
+
+## Front-end
+
+Be sure to add the front-end JavaScript from Turnstile: [https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/)
+
+To save you some time, here's the Turnstile JavaScript necessary for an HTML form. Note that I assume you're using a Blade template, thus the `{{ config('turnstile.site_key') }}`.
+```javascript
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+
+window.onloadTurnstileCallback = function () {
+    turnstile.render('#your-form-id', {
+        sitekey: '{{ config('turnstile.site_key') }}',
+        callback: function(token) {
+            console.log(`Challenge Success ${token}`);
+        },
+    });
+};
 ```
 
 ## Usage
@@ -46,7 +62,7 @@ $response = $turnstile->validate($request->get('cf-turnstile-response'));
 
 Ensure the response is valid
 ```php
-if ($response['status'] == true) {
+if (get_data($response, 'status', 0) == 1) {
   // TODO: add success code here
 }
 ```
