@@ -10,7 +10,7 @@ class TurnstileLaravel
     {
         $this->secret_key = $secret_key;
         if (empty($secret_key)) {
-            $secret_key = config('turnstile.secret_key');
+            $this->secret_key = config('turnstile.secret_key');
         }
     }
     
@@ -31,7 +31,7 @@ class TurnstileLaravel
                     CURLOPT_CONNECTTIMEOUT => 10,
                     CURLOPT_TIMEOUT => 30,
                     CURLOPT_POSTFIELDS => json_encode([
-                        'secret' => config('turnstile.secret_key'),
+                        'secret' => $this->secret_key,
                         'response' => $response
                     ]),
                 ]);
