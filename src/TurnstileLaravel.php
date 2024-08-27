@@ -4,9 +4,19 @@ namespace DerekCodes\TurnstileLaravel;
 
 class TurnstileLaravel
 {
+    public $secret_key;
+    
+    public function __construct($secret_key = null)
+    {
+        $this->secret_key = $secret_key;
+        if (empty($secret_key)) {
+            $secret_key = config('turnstile.secret_key');
+        }
+    }
+    
     public function validate(String $response): Array
     {
-        if (!empty(config('turnstile.secret_key'))) {
+        if (!empty($this->secret_key)) {
             try {
                 $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
                 $curl = curl_init();
