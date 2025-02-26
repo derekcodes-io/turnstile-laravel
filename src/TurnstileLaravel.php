@@ -46,7 +46,7 @@ class TurnstileLaravel
                 ];
             }
 
-            if ($json = json_decode($result)) {
+            if (isset($json->success) && $json->success) {
                 if ($json->success) {
                     return [
                         'status' => 1,
