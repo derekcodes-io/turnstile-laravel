@@ -2,6 +2,8 @@
 
 namespace DerekCodes\TurnstileLaravel;
 
+use Exception;
+
 class TurnstileLaravel
 {
     public $secret_key;
