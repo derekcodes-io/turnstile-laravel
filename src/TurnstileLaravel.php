@@ -14,7 +14,7 @@ class TurnstileLaravel
         }
     }
     
-    public function validate(String $response): Array
+    public function validate(String $response): array
     {
         if (!empty($this->secret_key)) {
             try {
