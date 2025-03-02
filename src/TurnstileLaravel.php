@@ -49,15 +49,8 @@ class TurnstileLaravel
             }
 
             if (isset($json->success) && $json->success) {
-                if ($json->success) {
-                    return [
-                        'status' => 1,
-                    ];
-                }
-
                 return [
-                    'status' => 0,
-                    'turnstile_response' => $json,
+                    'status' => 1,
                 ];
             }
 
